@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block title %}Home{% endblock %}
+{% block content %}
+<div class="container mt-5">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Email</th>
+                <th>Phone Number</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for contact in contacts %}
+            <tr>
+                <td><a href="{% url 'contact_detail' contact.id %}">{{ contact.first_name }}</a></td>
+                <td>{{ contact.email }}</td>
+                <td>{{ contact.phone_number }}</td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="3">No contacts available.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
