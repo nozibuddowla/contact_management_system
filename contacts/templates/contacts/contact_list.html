@@ -16,6 +16,19 @@
                 <td><a href="{% url 'contact_detail' contact.id %}">{{ contact.first_name }}</a></td>
                 <td>{{ contact.email }}</td>
                 <td>{{ contact.phone_number }}</td>
+                <td>
+                    <div class="btn-group">
+                        <a href="{% url 'edit_contact' contact.id %}" class="btn btn-outline-secondary border-0" title="Edit">
+                            <i class="fas fa-edit"></i>
+                        </a>
+                        <button type="button" class="btn btn-outline-secondary border-0" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-ellipsis-v"></i>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="{% url 'delete_contact' contact.id %}">Delete</a></li>
+                        </ul>
+                    </div>
+                </td>
             </tr>
             {% empty %}
             <tr>
