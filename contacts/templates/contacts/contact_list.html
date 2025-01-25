@@ -2,12 +2,17 @@
 {% block title %}Home{% endblock %}
 {% block content %}
 <div class="container mt-5">
-    <table class="table table-striped">
+    {% if query %}
+    <div class="alert alert-primary" role="alert">
+        <p><strong>{{ query }}</strong></p>
+    {% endif %}
+    <table class="table table-borderless table-striped">
         <thead>
             <tr>
                 <th>First Name</th>
                 <th>Email</th>
                 <th>Phone Number</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -21,12 +26,9 @@
                         <a href="{% url 'edit_contact' contact.id %}" class="btn btn-outline-secondary border-0" title="Edit">
                             <i class="fas fa-pen"></i>
                         </a>
-                        <button type="button" class="btn btn-outline-secondary border-0" data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="fas fa-ellipsis-v"></i>
-                        </button>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="{% url 'delete_contact' contact.id %}">Delete</a></li>
-                        </ul>
+                        <a class="btn btn-outline-secondary border-0" href="{% url 'delete_contact' contact.id %}" title="Delete">
+                            <i class="fas fa-trash"></i>
+                        </a>
                     </div>
                 </td>
             </tr>
